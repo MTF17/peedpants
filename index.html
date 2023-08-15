@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>VC CONVERTER</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    style: width: 300px, height: 400px;
+}
+
+h1 {
+    color: darkorange;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+p {
+    border: 3px solid darkorange;
+    font-weight: bold;
+    background-color: darkcyan;
+    padding: 15px;
+    width: 50%;
+    margin: 0 auto;
+    color: black;
+}
+
+button {
+    border: none;
+    color: black;
+    background-color: darkcyan;
+    display: inline-block;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.trade-success-message {
+    margin-top: 10px;
+    padding: 15px;
+    background-color: lightgreen;
+    color: black;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+
+}
+
+.balance {
+    border: 3px solid darkorange;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: darkcyan;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 10px;
+    width: 50%;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+
+}
+
+.portfolio {
+    border: 3px solid darkorange;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: darkcyan;
+    text-align: center;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.portfolio-item {
+    border: 3px solid darkorange;
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: darkcyan;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    background-color: lightblue;
+    color: black;
+    transform: scale(1.1);
+
+}
+.balance:hover {
+    background-color: lightblue;
+    color: black;
+    transform:  scale(1.1);
+}
+.portofolio:hover{
+    background-color: lightblue;
+    color: black;
+    transform:  scale(1.1);
+}
+</style>
+
+<style>
+.menu {
+    position: fixed;
+    border: 3px solid darkorange;
+    padding: 15px;
+    bottom: 20px;
+    font-weight: bold;
+    left: 20px;
+    background-color: darkcyan;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+}
+
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: lightblue; 
+    color: lightblue;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.popup button {
+    margin: 10px;
+    padding: 8px 15px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    background-color: darkcyan;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.popup button:hover {
+    background-color: lightblue;
+}
+
+.portfolio {
+    border: 3px solid darkorange;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: darkcyan;
+    text-align: center;
+    font-weight: bold;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item {
+    border: 3px solid darkorange;
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: darkcyan;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+    background-color: lightblue;
+    color: black;
+    transform: scale(1.1);
+}
+</style>
+</style>
+<body>
+
+<div class="menu" onclick="openCertificatesPopup()">Menu</div>
+
+<div class="popup-container" id="popupContainer">
+    <div class="popup">
+        <p>Do you want to see the certificates?</p>
+        <button onclick="redirectToCertificates()">Yes</button>
+        <button onclick="closeCertificatesPopup()">No</button>
+    </div>
+</div>
+
+<h1>VC CONVERTER</h1>
+
+
+<p>Trade your family for 45,000 VC<button onclick="displaySuccessMessage(this, 'family', 45000)">Trade</button></p>
+<p>Trade your home 20,000 VC<button onclick="displaySuccessMessage(this, 'home', 20000)">Trade</button></p>
+<p>Trade your dog 4,000 VC<button onclick="displaySuccessMessage(this, 'dog', 4000)">Trade</button></p>
+
+<div class="balance">VC balance: <span id="balance">0</span></div>
+<div class="portfolio">What you have traded: </div>
+
+<script>
+var balance = 0;
+var portfolio = {};
+
+function displaySuccessMessage(button, value, amount) {
+  var messageBox = document.createElement("div");
+  messageBox.className = "trade-success-message";
+  messageBox.innerHTML = "You succesfully traded your " + value + " for VC !!";
+  button.parentNode.appendChild(messageBox);
+
+  balance += amount;
+  document.getElementById("balance").innerHTML = balance;
+
+  if (portfolio[value]) {
+    portfolio[value] += 1;
+  } else {
+    portfolio[value] = 1;
+  }
+
+  var portfolioList = "";
+  for (const [key, value] of Object.entries(portfolio)) {
+    portfolioList += key + ": " + value + "<br>";
+  }
+  document.querySelector(".portfolio").innerHTML = "What you have traded: <br>" + portfolioList;
+
+  setTimeout(function() {
+    messageBox.parentNode.removeChild(messageBox);
+  }, 1200);
+}
+</script>
+
+
+<script>
+function openCertificatesPopup() {
+    var popupContainer = document.getElementById("popupContainer");
+    popupContainer.style.display = "block";
+}
+
+function closeCertificatesPopup() {
+    var popupContainer = document.getElementById("popupContainer");
+    popupContainer.style.display = "none";
+}
+
+function redirectToCertificates() {
+    closeCertificatesPopup();
+    window.location.href = "testingzoom.html";
+}
+</script>
+
+</body>
+</html>
+</head>
+</html>
