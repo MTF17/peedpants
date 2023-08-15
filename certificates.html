@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    background-color: lightblue;
+    font-family: Arial, sans-serif;
+    color: black;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+}
+
+h1 {
+    color: darkcyan;
+}
+
+.certificates-page {
+    background-color: darkcyan;
+    border-radius: 5px;
+    border: 3px solid darkorange;
+    padding: 20px;
+    position: relative;
+}
+
+.certificates-page img {
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.certificates-page img:hover {
+    transform: scale(1.1);
+}
+
+.zoom-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zoomed-image {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.back-to-home {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: darkcyan;
+    padding: 10px;
+    border-radius: 5px;
+    border: 3px solid darkorange;
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+    z-index: -1; 
+}
+</style>
+</head>
+<body>
+<div class="certificates-page" id="certificates">
+    <h2>Certificates</h2>
+    <img src="path_to_image1.jpg" onclick="zoomImage(this)">
+    <img src="path_to_image2.jpg" onclick="zoomImage(this)">
+    <img src="path_to_image3.jpg" onclick="zoomImage(this)">
+    <img src="path_to_image4.jpg" onclick="zoomImage(this)">
+</div>
+
+<div class="zoom-overlay" onclick="closeZoomedImage()">
+    <img class="zoomed-image" src="" alt="Zoomed Image">
+</div>
+
+<button class="back-to-home" onclick="redirectToHome()">Back to Home</button>
+
+<script>
+function zoomImage(imageElement) {
+    var overlay = document.querySelector(".zoom-overlay");
+    var zoomedImage = document.querySelector(".zoomed-image");
+
+    zoomedImage.src = imageElement.src;
+    overlay.style.display = "flex"; 
+}
+
+function closeZoomedImage() {
+    var overlay = document.querySelector(".zoom-overlay");
+
+    overlay.style.display = "none";
+}
+
+function redirectToHome() {
+    window.location.href = "https://peedpants.000webhostapp.com";
+}
+</script>
+</body>
+</html>
